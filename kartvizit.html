@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kartvizit | Minimalist Profil</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        --bg: #f6f6f6;
+        --card: #ffffff;
+        --text: #1f1f1f;
+        --muted: #6b6b6b;
+        --accent: #2f6fed;
+        --border: rgba(0, 0, 0, 0.08);
+      }
+
+      [data-theme="dark"] {
+        --bg: #0e1116;
+        --card: #171b22;
+        --text: #f2f4f8;
+        --muted: #a0a6b4;
+        --accent: #7aa2ff;
+        --border: rgba(255, 255, 255, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; min-height: 100vh; font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+        background: var(--bg); color: var(--text); display: grid; place-items: center;
+      }
+
+      .card {
+        width: min(92vw, 420px); background: var(--card); border: 1px solid var(--border);
+        border-radius: 24px; padding: 32px; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+        display: grid; gap: 24px;
+      }
+      .header { display: grid; gap: 8px; }
+      .name { font-size: 1.8rem; font-weight: 600; }
+      .role { color: var(--muted); }
+      .details { display: grid; gap: 8px; color: var(--muted); }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+      .actions a {
+        text-decoration: none; color: var(--text); border: 1px solid var(--border);
+        padding: 10px 16px; border-radius: 999px; font-size: 0.9rem;
+      }
+      .footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .toggle {
+        border: 1px solid var(--border); background: transparent; color: var(--text);
+        padding: 10px 16px; border-radius: 999px; cursor: pointer;
+      }
+      .back { color: var(--muted); text-decoration: none; font-size: 0.9rem; }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <header class="header">
+        <div class="name">Elif Yıldız</div>
+        <div class="role">Ürün Tasarımcısı · Dijital Kimlik</div>
+      </header>
+
+      <section class="details">
+        <span>📍 İstanbul, Türkiye</span>
+        <span>📧 elif@studiomoon.co</span>
+        <span>📞 +90 (555) 123 45 67</span>
+      </section>
+
+      <nav class="actions" aria-label="Sosyal medya bağlantıları">
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://www.behance.net" target="_blank" rel="noreferrer">Behance</a>
+        <a href="https://www.instagram.com" target="_blank" rel="noreferrer">Instagram</a>
+      </nav>
+
+      <footer class="footer">
+        <a class="back" href="index.html">← Vitrine dön</a>
+        <button class="toggle" type="button" id="themeToggle">Koyu moda geç</button>
+      </footer>
+    </main>
+
+    <script>
+      const toggle = document.getElementById("themeToggle");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      const setTheme = (theme) => {
+        document.documentElement.setAttribute("data-theme", theme);
+        toggle.textContent = theme === "dark" ? "Açık moda geç" : "Koyu moda geç";
+      };
+
+      const savedTheme = localStorage.getItem("kartvizit-theme");
+      setTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+      toggle.addEventListener("click", () => {
+        const next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        setTheme(next);
+        localStorage.setItem("kartvizit-theme", next);
+      });
+    </script>
+  </body>
+</html>
