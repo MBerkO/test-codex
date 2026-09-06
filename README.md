@@ -5,6 +5,7 @@ Bu repo, web projelerini tek bir yerde **barındırmak ve sergilemek** için haz
 ## Mevcut projeler
 - `kartvizit.html` → Minimalist dijital kartvizit sayfası
 - `pdf-konu-bolucu.html` → Yapay zekâ destekli PDF konu başlığına göre bölme planı üreten sayfa (demo)
+- `gercegin-otesinde.html` → 1997 tarihli Gerçeğin Ötesinde CD-ROM'u hazır dönem bilgisayarıyla, kurulum gerektirmeden tarayıcıda çalıştıran v86 oyun istasyonu
 
 ## Vitrin özellikleri
 - Hero alanı ve proje istatistikleri
